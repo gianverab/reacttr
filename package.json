@@ -1,0 +1,35 @@
+{
+  "name": "reacttr",
+  "version": "1.0.0",
+  "description": "Twitter clone made with React for educational purposes",
+  "main": "/build/app.js",
+  "scripts": {
+    "production": "webpack -p",
+    "build": "webpack --colors",
+    "serve": "webpack-dev-server --content-base build/ --colors --progress",
+    "start": "yarn run build && yarn run serve"
+  },
+  "author": "Gian Vera",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.7",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.24.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "firebase": "^3.6.1",
+    "moment": "^2.16.0",
+    "normalize-css": "^2.3.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^4.0.0-alpha.4",
+    "uuid": "^2.0.3"
+  }
+}
