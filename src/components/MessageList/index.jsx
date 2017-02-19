@@ -9,7 +9,7 @@ class MessageList extends Component {
   render () {
     return (
       <div className={style.root}>
-        {this.props.messages.map(msg => {
+        {this.props.messages.map((msg) => {
           return (
             <Message
               text={msg.text}
