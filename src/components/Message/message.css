@@ -1,0 +1,42 @@
+.root{
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  box-sizing: border-box;
+  padding: 1em;
+  margin: 0.5em 0;
+  font-family: sans-serif;
+}
+.text{
+  font-size: 16pt;
+  font-weight: 200;
+}
+.user{
+  display: flex;
+  align-items: center;
+}
+.avatar{
+  width: 34px;
+  height: auto;
+  border-radius: 50%;
+}
+.displayName{
+  font-weight: bold;
+  padding: 0.5em;
+}
+.username{
+  color: #aaa;
+}
+.date{
+  color: #aaa;
+  padding: 0.5em;
+  font-size: 10pt;
+}
+.buttons{
+  display: flex;
+  justify-content: flex-start;
+  color: #aaa;
+}
+.icon{
+  margin-right: 2em;
+}
