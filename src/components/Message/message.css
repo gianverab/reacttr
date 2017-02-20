@@ -18,7 +18,7 @@
 .avatar{
   width: 34px;
   height: auto;
-  border-radius: 50%;
+  border-radius: 5px;
 }
 .displayName{
   font-weight: bold;
