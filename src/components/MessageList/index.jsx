@@ -12,6 +12,7 @@ class MessageList extends Component {
         {this.props.messages.map((msg) => {
           return (
             <Message
+              key={msg.id}
               text={msg.text}
               avatar={msg.avatar}
               displayName={msg.displayName}
