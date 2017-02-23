@@ -9,6 +9,7 @@ class Main extends Component {
     super()
     this.state = {
 			openText: false,
+      thankyouText: false,
 			messages: [{
         id: uuID.v4(),
 				text: 'Tweet message',
@@ -31,9 +32,31 @@ class Main extends Component {
 		event.preventDefault()
 		this.setState({ openText: true })
 	}
+  handleCloseText (event) {
+		event.preventDefault()
+		this.setState({ openText: false })
+    this.setState({ thankyouText: false })
+	}
+  handleSendText (event) {
+		event.preventDefault()
+    this.setState({ openText: false })
+    this.setState({ thankyouText: true })
+	}
+  renderThankyou () {
+		if (this.state.thankyouText) {
+			return (
+        <div>
+          <p>Thank you for your message!</p>
+        </div>
+      )
+		}
+	}
 	renderOpenText () {
 		if (this.state.openText) {
-			return <InputText />
+			return <InputText
+               onCloseText={this.handleCloseText.bind(this)}
+               onSendText={this.handleSendText.bind(this)}
+             />
 		}
 	}
 	render () {
@@ -45,6 +68,7 @@ class Main extends Component {
 					onOpenText={this.handleOpenText.bind(this)}
 				/>
 				{this.renderOpenText()}
+        {this.renderThankyou()}
 				<MessageList messages={this.state.messages} />
 			</div>
 		)

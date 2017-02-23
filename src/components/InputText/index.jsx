@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import style from './input-text.css'
 
 class InputText extends Component {
+  constructor() {
+    super()
+  }
+  
   render () {
     return (
       <div className={style.root}>
