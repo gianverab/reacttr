@@ -12,6 +12,7 @@ class App extends Component {
 			user: {
 				photoURL: 'https://pbs.twimg.com/profile_images/1189582996/photo2-CV_400x400.jpg',
 				email: 'gianverab@gmail.com',
+				fullName: 'Gian Vera',
 				onOpenText: false
 			}
 		}

@@ -9,24 +9,11 @@ class Main extends Component {
     super()
     this.state = {
 			openText: false,
-      thankyouText: false,
-			messages: [{
-        id: uuID.v4(),
-				text: 'Tweet message',
-				avatar: 'https://pbs.twimg.com/profile_images/1189582996/photo2-CV_400x400.jpg',
-				displayName: 'Gian Vera',
-				username: 'gianvera',
-				date: Date.now() - 180000
-			},
-			{
-        id: uuID.v4(),
-				text: 'An older tweet message',
-				avatar: 'https://pbs.twimg.com/profile_images/1189582996/photo2-CV_400x400.jpg',
-				displayName: 'Gian Vera',
-				username: 'gianvera',
-				date: Date.now() - 1800000
-			}]
+			messages: []
 		}
+    this.handleCloseText = this.handleCloseText.bind(this)
+    this.handleSendText = this.handleSendText.bind(this)
+    this.handleOpenText = this.handleOpenText.bind(this)
 	}
 	handleOpenText (event) {
 		event.preventDefault()
@@ -35,28 +22,30 @@ class Main extends Component {
   handleCloseText (event) {
 		event.preventDefault()
 		this.setState({ openText: false })
-    this.setState({ thankyouText: false })
 	}
   handleSendText (event) {
 		event.preventDefault()
-    this.setState({ openText: false })
-    this.setState({ thankyouText: true })
-	}
-  renderThankyou () {
-		if (this.state.thankyouText) {
-			return (
-        <div>
-          <p>Thank you for your message!</p>
-        </div>
-      )
-		}
+    let newMessage = {
+      id: uuID.v4(),
+      date: Date.now(),
+      username: this.props.user.email.split('@')[0],
+      displayName: this.props.user.fullName,
+      avatar: this.props.user.photoURL,
+      text: event.target.text.value
+    }
+    this.setState({
+      openText: false,
+      messages: this.state.messages.concat([newMessage])
+    })
 	}
 	renderOpenText () {
 		if (this.state.openText) {
-			return <InputText
-               onCloseText={this.handleCloseText.bind(this)}
-               onSendText={this.handleSendText.bind(this)}
-             />
+			return (
+        <InputText
+          onCloseText={this.handleCloseText}
+          onSendText={this.handleSendText}
+        />
+      )
 		}
 	}
 	render () {
@@ -65,10 +54,9 @@ class Main extends Component {
 				<ProfileBar
 					picture={this.props.user.photoURL}
 					username={this.props.user.email.split('@')[0]}
-					onOpenText={this.handleOpenText.bind(this)}
+					onOpenText={this.handleOpenText}
 				/>
 				{this.renderOpenText()}
-        {this.renderThankyou()}
 				<MessageList messages={this.state.messages} />
 			</div>
 		)
