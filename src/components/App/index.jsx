@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { HashRouter, Match } from 'react-router'
+
 import normalize from 'normalize-css'
 import style from './app.css'
 
@@ -19,10 +21,30 @@ class App extends Component {
 	}
 	render () {
 		return (
-			<div>
-				<Header />
-				<Main user={this.state.user}/>
-			</div>
+			<HashRouter>
+				<div>
+					<Header />
+
+					<Match exactly pattern='/' render={() => {
+						if (this.state.user) {
+							return (
+								<Main user={this.state.user} />
+							)
+						} else {
+							//Render <Login />
+						}
+					}} />
+
+					<Match pattern='/profile' render={() => {
+						//Render <Profile />
+					}} />
+
+					<Match pattern='/profile/:username' render={({ params }) => {
+						//Render <Profile /> params.username
+					}} />
+
+				</div>
+			</HashRouter>
 		)
 	}
 }
