@@ -6,6 +6,9 @@
 	align-items: center;
 	padding: 1em;
 }
+a{
+	text-decoration: none;
+}
 .logo{
 	margin: 0;
 	color: #fff;

@@ -13,21 +13,21 @@ class Main extends Component {
       usernameToReply: '',
 			messages: [{
         id: uuID.v4(),
-				text: 'Tweet message',
-				avatar: 'https://pbs.twimg.com/profile_images/1189582996/photo2-CV_400x400.jpg',
-				displayName: 'Gian Vera',
-				username: 'gianvera',
+				text: 'Voy a derrotarte Vegeta!',
+				avatar: 'https://avatarfiles.alphacoders.com/762/76234.jpg',
+				displayName: 'Goku',
+				username: 'songoku',
 				date: Date.now() - 180000,
         retweets: 0,
         favorites: 0
 			},
 			{
         id: uuID.v4(),
-				text: 'An older tweet message',
-				avatar: 'https://pbs.twimg.com/profile_images/1189582996/photo2-CV_400x400.jpg',
-				displayName: 'Gian Vera',
-				username: 'gianvera',
-				date: Date.now() - 1800000,
+				text: 'Eso lo veremos Kakarotto!',
+				avatar: 'https://avatarfiles.alphacoders.com/558/55871.png',
+				displayName: 'Vegeta',
+				username: 'vegetasama',
+				date: Date.now() - 240000,
         retweets: 0,
         favorites: 0
 			}]

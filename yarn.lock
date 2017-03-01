@@ -1668,7 +1668,7 @@ he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
-history@^4.3.0, history@^4.5.1:
+history@^4.3.0:
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/history/-/history-4.5.1.tgz#44935a51021e3b8e67ebac267a35675732aba569"
   dependencies:
@@ -2827,7 +2827,7 @@ rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~1.0.4"
 
-react-broadcast@^0.1.2:
+react-broadcast@^0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/react-broadcast/-/react-broadcast-0.1.2.tgz#950de63578a2af399a396067a617af7402182330"
   dependencies:
@@ -2841,14 +2841,20 @@ react-dom@^15.3.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react-router@v4.0.0-alpha.6:
-  version "4.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-alpha.6.tgz#239fcf9a6ba7997021022c9b51d72d370f7b6bf4"
+react-history@^0.14.0:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/react-history/-/react-history-0.14.1.tgz#0b97763c1bc96aee6bb59ed9702b86f731869369"
   dependencies:
     history "^4.3.0"
+
+react-router@v4.0.0-alpha.4:
+  version "4.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-alpha.4.tgz#5f19e97b8df497e6f77f68bb1bd9441f56103335"
+  dependencies:
     path-to-regexp "^1.5.3"
     query-string "4.2.3"
-    react-broadcast "^0.1.2"
+    react-broadcast "^0.1.1"
+    react-history "^0.14.0"
 
 react@^15.3.2:
   version "15.4.2"

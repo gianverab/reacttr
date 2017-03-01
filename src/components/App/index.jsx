@@ -6,6 +6,8 @@ import style from './app.css'
 
 import Header from '../Header'
 import Main from '../Main'
+import Profile from '../Profile'
+import Login from '../Login'
 
 class App extends Component {
 	constructor () {
@@ -14,10 +16,15 @@ class App extends Component {
 			user: {
 				photoURL: 'https://pbs.twimg.com/profile_images/1189582996/photo2-CV_400x400.jpg',
 				email: 'gianverab@gmail.com',
-				fullName: 'Gian Vera',
+				fullName: 'Giancarlo Vera',
+				location: 'Buenos Aires, Argentina',
 				onOpenText: false
 			}
 		}
+		this.handleOnAuth = this.handleOnAuth.bind(this)
+	}
+	handleOnAuth () {
+		console.log('Auth');
 	}
 	render () {
 		return (
@@ -31,17 +38,32 @@ class App extends Component {
 								<Main user={this.state.user} />
 							)
 						} else {
-							//Render <Login />
+							return (
+								<Login
+									onAuth={this.handleOnAuth}
+								/>
+							)
 						}
 					}} />
 
-					<Match pattern='/profile' render={() => {
-						//Render <Profile />
-					}} />
+					<Match pattern='/profile' render={() => (
+							<Profile
+								picture={this.state.user.photoURL}
+								username={this.state.user.email.split('@')[0]}
+								email={this.state.user.email}
+								displayName={this.state.user.fullName}
+								location={this.state.user.location}
+							/>
+						)
+					} />
 
-					<Match pattern='/profile/:username' render={({ params }) => {
-						//Render <Profile /> params.username
-					}} />
+					<Match pattern='/user/:username' render={({ params }) => (
+						<Profile
+							picture={params.avatar}
+							username={params.username}
+							displayName={params.username}
+						/>
+					)} />
 
 				</div>
 			</HashRouter>
