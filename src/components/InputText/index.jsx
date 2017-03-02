@@ -1,27 +1,29 @@
-import React, { Component } from 'react'
+import React, { PropTypes } from 'react'
 import style from './input-text.css'
 
-class InputText extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render () {
-    return (
-      <div className={style.root}>
-        <form className={style.form} onSubmit={this.props.onSendText}>
-          <textarea name="text"
-                    className={style.text}
-                    defaultValue={(this.props.usernameToReply) ? `@${this.props.usernameToReply} ` : ''} >
-          </textarea>
-          <div className={style.buttons}>
-            <button className={style.close} onClick={this.props.onCloseText}>Close</button>
-            <button className={style.send} type="submit">Send</button>
-          </div>
-        </form>
-      </div>
-    )
-  }
+const propTypes = {
+  onSendText: PropTypes.func.isRequired,
+  onCloseText: PropTypes.func.isRequired,
+  usernameToReply: PropTypes.string.isRequired
 }
+
+function InputText ({ onSendText, onCloseText, usernameToReply }) {
+  return (
+    <div className={style.root}>
+      <form className={style.form} onSubmit={onSendText}>
+        <textarea name='text'
+          className={style.text}
+          defaultValue={(usernameToReply) ? `@${usernameToReply} ` : ''} >
+        </textarea>
+        <div className={style.buttons}>
+          <button className={style.close} onClick={onCloseText}>Close</button>
+          <button className={style.send} type='submit'>Send</button>
+        </div>
+      </form>
+    </div>
+  )
+}
+
+InputText.propTypes = propTypes
 
 export default InputText

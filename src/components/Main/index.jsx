@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import uuID from 'uuid'
 import MessageList from '../MessageList'
 import ProfileBar from '../ProfileBar'
 import InputText from '../InputText'
+
+const propTypes = {
+  user: PropTypes.object.isRequired
+}
 
 class Main extends Component {
   constructor (props) {
@@ -92,11 +96,13 @@ class Main extends Component {
 	handleOpenText (event) {
 		event.preventDefault()
 		this.setState({ openText: true })
-	}
+  }
+
   handleCloseText (event) {
 		event.preventDefault()
 		this.setState({ openText: false })
-	}
+  }
+
   handleSendText (event) {
 		event.preventDefault()
     let newMessage = {
@@ -111,19 +117,21 @@ class Main extends Component {
       openText: false,
       messages: this.state.messages.concat([newMessage])
     })
-	}
-	renderOpenText () {
-		if (this.state.openText) {
-			return (
+  }
+
+  renderOpenText () {
+    if (this.state.openText) {
+      return (
         <InputText
           onCloseText={this.handleCloseText}
           onSendText={this.handleSendText}
           usernameToReply={this.state.usernameToReply}
         />
       )
-		}
-	}
-	render () {
+    }
+  }
+
+  render () {
 		return (
 			<div>
 				<ProfileBar
@@ -139,7 +147,9 @@ class Main extends Component {
           onReplyTweet={this.handleReplyTweet} />
 			</div>
 		)
-	}
+  }
 }
+
+Main.propTypes = propTypes
 
 export default Main

@@ -1,7 +1,20 @@
-import React, { Component } from 'react'
+import React, { PropTypes, Component } from 'react'
 import { Link } from 'react-router'
 import moment from 'moment'
 import style from './message.css'
+
+const propTypes = {
+  username: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  displayName: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  date: PropTypes.number.isRequired,
+  numRetweets: PropTypes.number.isRequired,
+  numFavorites: PropTypes.number.isRequired,
+  onReplyTweet: PropTypes.func.isRequired,
+  onFavorite: PropTypes.func.isRequired,
+  onRetweet: PropTypes.func.isRequired
+}
 
 class Message extends Component {
   constructor (props) {
@@ -52,16 +65,16 @@ class Message extends Component {
         <h3 className={style.text}>{this.props.text}</h3>
         <div className={style.buttons}>
           <div className={style.icon}
-               onClick={this.props.onReplyTweet}>
+            onClick={this.props.onReplyTweet} >
             <span className='fa fa-reply'></span>
           </div>
           <div className={(this.state.pressRetweet) ? style.rtGreen : ''}
-               onClick={this.onPressRetweet}>
+            onClick={this.onPressRetweet}>
             <span className='fa fa-retweet'></span>
             <span className={style.num}>{this.props.numRetweets}</span>
           </div>
           <div className={(this.state.pressFavorite) ? style.favYellow : ''}
-               onClick={this.onPressFavorite}>
+            onClick={this.onPressFavorite}>
             <span className='fa fa-star'></span>
             <span className={style.num}>{this.props.numFavorites}</span>
           </div>
@@ -70,5 +83,7 @@ class Message extends Component {
     )
   }
 }
+
+Message.propTypes = propTypes
 
 export default Message
