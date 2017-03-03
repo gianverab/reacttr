@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { HashRouter, Match } from 'react-router'
-
+import firebase from 'firebase'
 import normalize from 'normalize-css'
-import style from './app.css'
 
 import Header from '../Header'
 import Main from '../Main'
@@ -13,21 +12,26 @@ class App extends Component {
 	constructor () {
 		super()
 		this.state = {
-			user: {
+			user: null /* {
 				photoURL: 'https://pbs.twimg.com/profile_images/1189582996/photo2-CV_400x400.jpg',
 				email: 'gianverab@gmail.com',
 				fullName: 'Giancarlo Vera',
 				location: 'Buenos Aires, Argentina',
 				onOpenText: false
-			}
+			} */
 		}
 		this.handleOnAuth = this.handleOnAuth.bind(this)
 	}
-	handleOnAuth () {
-		console.log('Auth');
-	}
-	render () {
-		return (
+  handleOnAuth () {
+    const provider = new firebase.auth.GithubAuthProvider()
+
+    firebase.auth().signInWithPopup(provider)
+     .then(result => console.log(`${result.user.email} ha iniciado sesión`))
+     .catch(error => console.error(`Error: ${error.code}: ${error.message}`))
+  }
+
+  render () {
+    return (
 			<HashRouter>
 				<div>
 					<Header />
