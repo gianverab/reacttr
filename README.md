@@ -2,7 +2,7 @@
 
 ## Description
 
-Twitter clone made with React for educational purposes. 
+Twitter clone made with React for educational purposes.
 
 ## Getting Started
 
@@ -16,4 +16,36 @@ To run your local server just type:
 
 ```
 yarn start
+```
+
+## Deploying to Production
+
+Before register your app with firebase:
+
+```
+npm install -g firebase-tools
+```
+
+To login your firebase account just type:
+
+```
+firebase login
+```
+
+To initialize your firebase app on you folder just type:
+
+```
+firebase init
+```
+
+To minify your app code for production just type:
+
+```
+yarn run production
+```
+
+To deploy your app to firebase hosting just type:
+
+```
+firebase deploy
 ```
