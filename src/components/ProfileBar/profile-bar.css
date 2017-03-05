@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 .picture{
   width: 34px;
@@ -23,5 +24,17 @@
   border: 1px solid #1f6fb1;
   padding: 0.5em 0.75em;
   border-radius: 4px;
-  margin: 0 0.5em;
+  margin: 0 0.25em;
+}
+.buttonLogout{
+  border: none;
+  background-color: #ddd;
+  color: #666;
+  border: 1px solid #d3d3d3;
+  padding: 0.5em 0.75em;
+  border-radius: 4px;
+  margin: 0 0.25em;
+}
+.button:active, .button:focus, .buttonLogout:active, .buttonLogout:focus{
+  outline: none;
 }

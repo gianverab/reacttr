@@ -12,15 +12,21 @@ class App extends Component {
 	constructor () {
 		super()
 		this.state = {
-			user: null /* {
-				photoURL: 'https://pbs.twimg.com/profile_images/1189582996/photo2-CV_400x400.jpg',
-				email: 'gianverab@gmail.com',
-				fullName: 'Giancarlo Vera',
-				location: 'Buenos Aires, Argentina',
-				onOpenText: false
-			} */
+			user: null
 		}
 		this.handleOnAuth = this.handleOnAuth.bind(this)
+		this.handleLogout = this.handleLogout.bind(this)
+	}
+
+  componentWillMount () {
+		firebase.auth().onAuthStateChanged(user => {
+			if (user) {
+				this.setState({ user })
+				console.log(user)
+			} else {
+				this.setState({ user: null})
+			}
+		})
 	}
   handleOnAuth () {
     const provider = new firebase.auth.GithubAuthProvider()
@@ -29,6 +35,11 @@ class App extends Component {
      .then(result => console.log(`${result.user.email} ha iniciado sesión`))
      .catch(error => console.error(`Error: ${error.code}: ${error.message}`))
   }
+	handleLogout () {
+		firebase.auth().signOut()
+			.then(() => console.log('Te has desconectado correctamente'))
+			.catch(() => console.log('Ha ocurrido un error'))
+	}
 
   render () {
     return (
@@ -39,7 +50,9 @@ class App extends Component {
 					<Match exactly pattern='/' render={() => {
 						if (this.state.user) {
 							return (
-								<Main user={this.state.user} />
+								<Main user={this.state.user}
+											onLogout={this.handleLogout}
+								/>
 							)
 						} else {
 							return (
@@ -53,10 +66,9 @@ class App extends Component {
 					<Match pattern='/profile' render={() => (
 							<Profile
 								picture={this.state.user.photoURL}
-								username={this.state.user.email.split('@')[0]}
+								username={this.state.user.displayName.split(' ')[0]}
 								email={this.state.user.email}
-								displayName={this.state.user.fullName}
-								location={this.state.user.location}
+								displayName={this.state.user.displayName}
 							/>
 						)
 					} />

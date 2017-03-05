@@ -5,8 +5,7 @@ const propTypes = {
   picture: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired
+  email: PropTypes.string.isRequired
 }
 
 function Profile ({ picture, displayName, username, email, location }) {
@@ -25,7 +24,7 @@ function Profile ({ picture, displayName, username, email, location }) {
           <span className='fa fa-envelope'></span> {email}
         </li>
         <li>
-          <span className='fa fa-map-marker'></span> {location}
+          <span className='fa fa-map-marker'></span> 
         </li>
       </ul>
     </div>
